@@ -1,0 +1,10 @@
+C:\Users\rodme\source\repos\hanoi_towers\hanoi_towers\bin\Debug\hanoi_towers.exe.config
+C:\Users\rodme\source\repos\hanoi_towers\hanoi_towers\bin\Debug\hanoi_towers.exe
+C:\Users\rodme\source\repos\hanoi_towers\hanoi_towers\bin\Debug\hanoi_towers.pdb
+C:\Users\rodme\source\repos\hanoi_towers\hanoi_towers\obj\Debug\hanoi_towers.csproj.AssemblyReference.cache
+C:\Users\rodme\source\repos\hanoi_towers\hanoi_towers\obj\Debug\hanoi_towers.Form1.resources
+C:\Users\rodme\source\repos\hanoi_towers\hanoi_towers\obj\Debug\hanoi_towers.Properties.Resources.resources
+C:\Users\rodme\source\repos\hanoi_towers\hanoi_towers\obj\Debug\hanoi_towers.csproj.GenerateResource.cache
+C:\Users\rodme\source\repos\hanoi_towers\hanoi_towers\obj\Debug\hanoi_towers.csproj.CoreCompileInputs.cache
+C:\Users\rodme\source\repos\hanoi_towers\hanoi_towers\obj\Debug\hanoi_towers.exe
+C:\Users\rodme\source\repos\hanoi_towers\hanoi_towers\obj\Debug\hanoi_towers.pdb
