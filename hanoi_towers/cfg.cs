@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace hanoi_towers
 {
-    class cfg
+    class cfg   
     {
-        public static readonly int maxNumDisk = 10;
+        public static readonly int maxNumDisk = 8;
         public static readonly int minNumDisk = 2;
-        public static readonly int discHeight = 20;
-        public static readonly int discMaxWidth = 150;
+        public static readonly int discHeight = 23;
+        public static readonly int discMaxWidth = 160;
         public static int num_disc = 3;
         public static readonly Color disc_color = Color.Aquamarine;
 

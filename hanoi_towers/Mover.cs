@@ -12,9 +12,11 @@ namespace hanoi_towers
     {
         static public Disc disc;
         static public Tower next_tower;
-
+        static public bool IsCorrectPick;
         static public void Transfer(object sender, MouseEventArgs e)
         {
+            if (!IsCorrectPick)
+                return;
             Point disc_pos = disc.Location;
             for(int i = 0; i < cfg.numTowers; i++)
             {
@@ -29,7 +31,7 @@ namespace hanoi_towers
                     break;
                 }
             }
-            next_tower.Push(disc.curTower.Pop());
+            next_tower.Push(disc);
 
         }
     }

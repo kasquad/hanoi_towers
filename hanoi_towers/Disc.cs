@@ -20,12 +20,13 @@ namespace hanoi_towers
             visual_container.BringToFront();
             radius = size.Width;
             this.curTower = curTower;
+            SetRoundedShape(visual_container, 10);
 
             visual_container.MouseDown += new MouseEventHandler(MouseDown);
             visual_container.MouseMove += new MouseEventHandler(Disc.Move);
             visual_container.MouseUp += new MouseEventHandler(Mover.Transfer);
         }
-        
+
         public void Return()
         {
             MessageBox.Show("Incorrect move");
@@ -48,6 +49,30 @@ namespace hanoi_towers
             move_pos.X = e.X;
             move_pos.Y = e.Y;
             Mover.disc = this;
+            if (this != this.curTower.Peek())
+            {
+                Mover.IsCorrectPick = false;
+                MessageBox.Show("Incorrect move");
+                return;
+            }
+            else
+            {
+                Mover.IsCorrectPick = true;
+                this.curTower.Pop();
+            }
+        }
+        static void SetRoundedShape(Control control, int radius) //Взял метод из интернета
+        {
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddLine(radius, 0, control.Width - radius, 0);
+            path.AddArc(control.Width - radius, 0, radius, radius, 270, 90);
+            path.AddLine(control.Width, radius, control.Width, control.Height - radius);
+            path.AddArc(control.Width - radius, control.Height - radius, radius, radius, 0, 90);
+            path.AddLine(control.Width - radius, control.Height, radius, control.Height);
+            path.AddArc(0, control.Height - radius, radius, radius, 90, 90);
+            path.AddLine(0, control.Height - radius, 0, radius);
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            control.Region = new Region(path);
         }
         
     }

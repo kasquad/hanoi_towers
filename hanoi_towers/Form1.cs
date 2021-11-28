@@ -60,15 +60,7 @@ namespace hanoi_towers
             cfg.num_disc = numDiskSelector.Value;
 
             for (int i = 0; i < cfg.num_disc; i++)
-            {
-                Console.WriteLine((1 - i / 10.0));
                 towers[0].Push(new Disc(control, new Size((int)(cfg.discMaxWidth * (1 - i / 10.0)), cfg.discHeight), ref towers[0]));
-            }
-
-
-
-
-
         }
     }
 }
