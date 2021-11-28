@@ -20,14 +20,14 @@ namespace hanoi_towers
             Point disc_pos = disc.Location;
             for(int i = 0; i < cfg.numTowers; i++)
             {
-                Point tower_pos = Form1.towers[i].Location;
+                Point tower_pos = Game.towers[i].Location;
                 if (disc_pos.X < tower_pos.X &&
                     disc_pos.Y > tower_pos.Y &&
                     disc_pos.X + disc.radius > tower_pos.X &&
                     disc_pos.Y + cfg.discHeight < tower_pos.Y + cfg.sizeTower.Height
                     )
                 {
-                    next_tower = Form1.towers[i];
+                    next_tower = Game.towers[i];
                     break;
                 }
             }

@@ -10,18 +10,15 @@ using System.Windows.Forms;
 
 namespace hanoi_towers
 {
-    public partial class Form1 : Form
+    public partial class Game : Form
     {
 
         TrackBar numDiskSelector;
         static ControlCollection control;
-
-
-        //static public List<Tower> towers = new List<Tower>();
         static public Tower[] towers = new Tower[cfg.numTowers];
     
         List<Disc> discs = new List<Disc>();
-        public Form1()
+        public Game()
         {
             InitializeComponent();
         }

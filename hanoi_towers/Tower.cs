@@ -16,6 +16,8 @@ namespace hanoi_towers
         public Tower(Form.ControlCollection control) : base(ref control, cfg.sizeTower)
         {
             visual_container.BackColor = cfg.colorTower;
+            SetRoundedShape(visual_container, 10);
+            visual_container.SendToBack();
         }
         public void Push(Disc disc)
         {
@@ -27,6 +29,7 @@ namespace hanoi_towers
             Point pos = CalculateDiscPosition(disc.visual_container.Width);
             disc.curTower = this;
             discs.Push(disc);
+      
             disc.Draw(pos);
         }
 
