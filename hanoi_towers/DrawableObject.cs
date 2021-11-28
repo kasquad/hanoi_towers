@@ -9,7 +9,7 @@ using static System.Windows.Forms.Form;
 
 namespace hanoi_towers
 {
-    class DrawableObject
+    public class DrawableObject
     {
         internal ControlCollection control;
         internal Panel visual_container;

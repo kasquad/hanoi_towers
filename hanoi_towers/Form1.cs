@@ -15,9 +15,11 @@ namespace hanoi_towers
 
         TrackBar numDiskSelector;
         static ControlCollection control;
-        
 
-        Tower[] towers = new Tower[cfg.numTowers];
+
+        //static public List<Tower> towers = new List<Tower>();
+        static public Tower[] towers = new Tower[cfg.numTowers];
+    
         List<Disc> discs = new List<Disc>();
         public Form1()
         {
@@ -62,8 +64,6 @@ namespace hanoi_towers
                 Console.WriteLine((1 - i / 10.0));
                 towers[0].Push(new Disc(control, new Size((int)(cfg.discMaxWidth * (1 - i / 10.0)), cfg.discHeight), ref towers[0]));
             }
-;
-
 
 
 

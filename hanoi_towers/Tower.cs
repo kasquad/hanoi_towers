@@ -10,7 +10,7 @@ using static System.Windows.Forms.Control;
 namespace hanoi_towers
 {
 
-    class Tower : DrawableObject
+    public class Tower : DrawableObject
     {
         Stack<Disc> discs = new Stack<Disc>();
         public Tower(Form.ControlCollection control) : base(ref control, cfg.sizeTower)

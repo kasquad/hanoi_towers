@@ -8,16 +8,22 @@ using System.Windows.Forms;
 
 namespace hanoi_towers
 {
-    class Disc : DrawableObject
+    public class Disc : DrawableObject
     {
         public int radius;
         public Tower curTower;
+
+        static private Point move_pos = new Point();
         public Disc(Form.ControlCollection control, Size size, ref Tower curTower) : base(ref control, size)
         {
             visual_container.BackColor = cfg.disc_color;
             visual_container.BringToFront();
             radius = size.Width;
             this.curTower = curTower;
+
+            visual_container.MouseDown += new MouseEventHandler(MouseDown);
+            visual_container.MouseMove += new MouseEventHandler(Disc.Move);
+            visual_container.MouseUp += new MouseEventHandler(Mover.Transfer);
         }
         
         public void Return()
@@ -25,5 +31,24 @@ namespace hanoi_towers
             MessageBox.Show("Incorrect move");
             curTower.Push(this);
         }
+
+       static public void Move(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left) 
+            {
+                Panel v_c = (sender as Panel);
+                Point newlocation = v_c.Location;
+                newlocation.X += e.X - move_pos.X;
+                newlocation.Y += e.Y - move_pos.Y;
+                v_c.Location = newlocation;
+            }
+        }
+
+         public void MouseDown(object sender, MouseEventArgs e) {
+            move_pos.X = e.X;
+            move_pos.Y = e.Y;
+            Mover.disc = this;
+        }
+        
     }
 }
