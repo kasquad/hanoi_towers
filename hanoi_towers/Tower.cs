@@ -29,18 +29,12 @@ namespace hanoi_towers
             Point pos = CalculateDiscPosition(disc.visual_container.Width);
             disc.curTower = this;
             discs.Push(disc);
-      
             disc.Draw(pos);
         }
 
 
-        public Disc Pop(/*object sender, EventArgs e*/)
+        public Disc Pop()
         {
-            //if ((sender as Panel) != discs.Peek().visual_container)
-            //{
-            //    MessageBox.Show("Error");
-            //    return;
-            //}
             Disc disc = discs.Peek();
             discs.Pop();
             return disc;
@@ -55,6 +49,15 @@ namespace hanoi_towers
             int x = visual_container.Location.X - width / 2 + cfg.sizeTower.Width/2;
             int y = visual_container.Location.Y + visual_container.Height - cfg.discHeight - discs.Count*30 ;
             return new Point(x, y);
+        }
+
+        public void Clear()
+        {
+            while(discs.Count != 0)
+            {
+                discs.Peek().Delete();
+                discs.Pop();
+            }
         }
         
     }

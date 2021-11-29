@@ -13,6 +13,7 @@ namespace hanoi_towers
         static public Disc disc;
         static public Tower next_tower;
         static public bool IsCorrectPick;
+        static public int num_steps = 0;
         static public void Transfer(object sender, MouseEventArgs e)
         {
             if (!IsCorrectPick)
@@ -28,11 +29,13 @@ namespace hanoi_towers
                     )
                 {
                     next_tower = Game.towers[i];
-                    break;
+                    num_steps++;
+                    Game.num_steps.Text = "Количество шагов: " + num_steps.ToString();
+                    next_tower.Push(disc);
+                    return;
                 }
             }
-            next_tower.Push(disc);
-
+            disc.Return();
         }
     }
 }

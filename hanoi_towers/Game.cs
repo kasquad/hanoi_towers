@@ -14,10 +14,12 @@ namespace hanoi_towers
     {
 
         TrackBar numDiskSelector;
+        static  public Label num_steps = new Label();
+
         static ControlCollection control;
         static public Tower[] towers = new Tower[cfg.numTowers];
-    
         List<Disc> discs = new List<Disc>();
+    
         public Game()
         {
             InitializeComponent();
@@ -39,6 +41,11 @@ namespace hanoi_towers
             numDiskSelector.Value = numDiskSelector.Minimum;
             numDiskSelector.Location = new Point(0, 0);
             this.Controls.Add(numDiskSelector);
+
+
+            num_steps.Location = new Point(300, 0);
+            num_steps.Size = new Size(100, 30);
+            this.Controls.Add(num_steps);
             
             Button start_button = new Button();
             start_button.Location = new Point(150, 0);
@@ -55,6 +62,11 @@ namespace hanoi_towers
         void Start(object sender, EventArgs e)
         {
             cfg.num_disc = numDiskSelector.Value;
+            Mover.num_steps = 0;
+            num_steps.Text = "Количество шагов: 0";
+
+            for (int i = 0; i < cfg.numTowers; i++)
+                towers[i].Clear();
 
             for (int i = 0; i < cfg.num_disc; i++)
                 towers[0].Push(new Disc(control, new Size((int)(cfg.discMaxWidth * (1 - i / 10.0)), cfg.discHeight), ref towers[0]));

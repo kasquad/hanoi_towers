@@ -62,6 +62,9 @@ namespace hanoi_towers
             }
         }
        
-        
+        public void Delete()
+        {
+            control.Remove(visual_container);
+        }
     }
 }
