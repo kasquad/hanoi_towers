@@ -59,9 +59,9 @@ namespace hanoi_towers
                 towers[i].Clear();
 
             for (int i = 0; i < cfg.num_disc; i++)
-                towers[0].Push(new Disc(control, new Size((int)(cfg.discMaxWidth * (1 - i / 10.0)), cfg.discHeight), ref towers[0]));
+                towers[0].Push(new Disc(control, new Size((int)(cfg.discMaxWidth * (1 - i / 10.0)), cfg.discHeight), ref towers[0]),false);
 
-            //Mover.Solver(cfg.num_disc,0, 2, 1);
+            //Mover.Solver(cfg.num_disc, 0, 2, 1);
         }
     }
 }

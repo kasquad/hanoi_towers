@@ -32,37 +32,17 @@ namespace hanoi_towers
                 {
                     next_tower = Engine.towers[i];
                    
-                    next_tower.Push(disc);
+                    next_tower.Push(disc,false);
                     return;
                 }
             }
             disc.Return();
         }
-        //void autoSolution(int n, int A, int B)
-        //{
-        //    if (n == 1)
-        //    {
-        //        cont.tmpD = n - 1;
-        //        System.Threading.Thread.Sleep(350);
-        //        mover(B - 1);
-        //        // cout << A << " --> " << B << endl;
-        //    }
-        //    else
-        //    {
-        //        autoSolution(n - 1, A, 6 - A - B);
-        //        cont.tmpD = n - 1;
-        //        System.Threading.Thread.Sleep(350);
-        //        mover(B - 1);
-
-        //        // cout << A << " --> " << B << endl;
-        //        autoSolution(n - 1, 6 - A - B, B);
-        //    }
-        //}
         public static void Solver(int num_disc, int a, int b, int c)
         {
             if (num_disc > 1) Solver(num_disc - 1, a, c, b);
             Thread.Sleep(200);
-            Engine.towers[b].Push(Engine.towers[a].Pop());
+            Engine.towers[b].Push(Engine.towers[a].Pop(),true);
             if (num_disc > 1) Solver(num_disc - 1, c, b, a);
         }
     }

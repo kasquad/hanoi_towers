@@ -15,12 +15,14 @@ namespace hanoi_towers
         public static readonly int discMaxWidth = 160;
         public static int num_disc = 3;
         public static readonly Color disc_color = Color.Aquamarine;
-
+        public static readonly int df = 3;
 
         public static readonly int numTowers = 3;
         public static readonly int offsetXtower = 200;
         public static readonly int offsetYtower = 50;
         public static Size sizeTower { get { return new Size(15, 300); } }
         public static readonly Color colorTower = Color.Gray;
+
+        
     }
 }

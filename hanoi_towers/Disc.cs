@@ -30,7 +30,7 @@ namespace hanoi_towers
         public void Return()
         {
             MessageBox.Show("Incorrect move");
-            curTower.Push(this);
+            curTower.Push(this,false);
         }
 
        static public void Move(object sender, MouseEventArgs e)
