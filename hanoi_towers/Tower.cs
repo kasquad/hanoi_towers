@@ -26,6 +26,11 @@ namespace hanoi_towers
                 disc.Return();
                 return;
             }
+            else
+            {
+                Mover.num_steps++;
+                Engine.num_steps.Text = "Количество шагов: " + Mover.num_steps.ToString();
+            }
             Point pos = CalculateDiscPosition(disc.visual_container.Width);
             disc.curTower = this;
             discs.Push(disc);

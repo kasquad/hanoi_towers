@@ -49,6 +49,7 @@
     <Compile Include="cfg.cs" />
     <Compile Include="Disc.cs" />
     <Compile Include="DrawableObject.cs" />
+    <Compile Include="Engine.cs" />
     <Compile Include="Game.cs">
       <SubType>Form</SubType>
     </Compile>
