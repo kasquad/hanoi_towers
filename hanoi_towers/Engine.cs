@@ -19,6 +19,7 @@ namespace hanoi_towers
         static public Tower[] towers = new Tower[cfg.numTowers];
         List<Disc> discs = new List<Disc>();
 
+        static public Button solve_button;
 
         public Engine(Form.ControlCollection control) => this.control = control;
         public void ConfigureEnviroment()
@@ -27,24 +28,26 @@ namespace hanoi_towers
             numDiskSelector.Maximum = cfg.maxNumDisk;
             numDiskSelector.Minimum = cfg.minNumDisk;
             numDiskSelector.Value = numDiskSelector.Minimum;
-            numDiskSelector.Location = new Point(0, 0);
+            numDiskSelector.Location = new Point(730, 10);
             control.Add(numDiskSelector);
 
-
-            num_steps.Location = new Point(300, 0);
-            num_steps.Size = new Size(100, 30);
-            control.Add(num_steps);
-
             Button start_button = new Button();
-            start_button.Location = new Point(150, 0);
+            start_button.Location = new Point(730, 60);
             start_button.Text = "Старт!";
             start_button.Click += new EventHandler(this.Start);
             control.Add(start_button);
 
-            Button solve_button = new Button();
-            solve_button.Location = new Point(400, 0);
+            num_steps.Location = new Point(20, 20);
+            num_steps.Size = new Size(100, 30);
+            num_steps.Text = "Количество шагов: 0";
+            control.Add(num_steps);
+
+
+            solve_button = new Button();
+            solve_button.Location = new Point(730, 300);
             solve_button.Text = "Решить";
             solve_button.Click += new EventHandler(this.Solve);
+            solve_button.Enabled = false;
             control.Add(solve_button);
 
             for (int i = 0; i < cfg.numTowers; i++)
@@ -57,8 +60,9 @@ namespace hanoi_towers
         }
         public void Start(object sender, EventArgs e)
         {
+            solve_button.Enabled = true;
             cfg.num_disc = numDiskSelector.Value;
-            Mover.num_steps = -cfg.num_disc;
+            Mover.num_steps = 0;
             num_steps.Text = "Количество шагов: 0";
 
             for (int i = 0; i < cfg.numTowers; i++)
@@ -70,6 +74,7 @@ namespace hanoi_towers
         }
         public void Solve(object sender,EventArgs e)
         {
+            solve_button.Enabled = false;
             Mover.Solver(cfg.num_disc, 0, 2, 1);
 
         }

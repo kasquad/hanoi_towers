@@ -31,8 +31,11 @@ namespace hanoi_towers
                     )
                 {
                     next_tower = Engine.towers[i];
-                   
+                    if(next_tower != disc.curTower)
+                    Mover.num_steps++;
+                    Engine.num_steps.Text = "Количество шагов: " + Mover.num_steps.ToString();
                     next_tower.Push(disc,false);
+                    Engine.solve_button.Enabled = false;
                     return;
                 }
             }
@@ -41,7 +44,6 @@ namespace hanoi_towers
         public static void Solver(int num_disc, int a, int b, int c)
         {
             if (num_disc > 1) Solver(num_disc - 1, a, c, b);
-            Thread.Sleep(200);
             Engine.towers[b].Push(Engine.towers[a].Pop(),true);
             if (num_disc > 1) Solver(num_disc - 1, c, b, a);
         }

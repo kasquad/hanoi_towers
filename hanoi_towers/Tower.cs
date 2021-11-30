@@ -35,11 +35,7 @@ namespace hanoi_towers
                 disc.Return();
                 return;
             }
-            else
-            {
-                Mover.num_steps++;
-                Engine.num_steps.Text = "Количество шагов: " + Mover.num_steps.ToString();
-            }
+            
             Point pos = CalculateDiscPosition(disc.visual_container.Width);
             discs.Push(disc);
             if (!animation)
@@ -57,7 +53,9 @@ namespace hanoi_towers
             Move(y_top_goal, disc, true);
             Move(final_pos.X, disc, false);
             Move(final_pos.Y, disc, true);
-            
+            Mover.num_steps++;
+            Engine.num_steps.Text = "Количество шагов: " + Mover.num_steps.ToString();
+
 
         }
         /// <summary>
@@ -70,6 +68,7 @@ namespace hanoi_towers
         {
             int eps = 1;
             int sign;
+           
             if (dir)
             {
                 sign = Math.Sign(goal - disc.visual_container.Location.Y);
@@ -77,6 +76,7 @@ namespace hanoi_towers
                 {
                     disc.visual_container.Location = new Point(disc.visual_container.Location.X,
                                                                disc.visual_container.Location.Y + sign * cfg.df);
+                    Thread.Sleep(2);
                 }
                 return;
             }
@@ -86,6 +86,7 @@ namespace hanoi_towers
             {
                 disc.visual_container.Location = new Point(disc.visual_container.Location.X  + sign *cfg.df,
                                                            disc.visual_container.Location.Y);
+                Thread.Sleep(2);
             }
         }
         void wait(object sender, EventArgs e)

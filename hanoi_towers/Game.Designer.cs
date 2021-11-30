@@ -31,12 +31,14 @@ namespace hanoi_towers
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1132, 453);
-            this.Name = "Form1";
+            this.MaximumSize = new System.Drawing.Size(1150, 500);
+            this.MinimumSize = new System.Drawing.Size(1150, 500);
+            this.Name = "Game";
             this.Text = "Hanoi towers";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
