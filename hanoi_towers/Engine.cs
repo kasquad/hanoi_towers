@@ -41,6 +41,12 @@ namespace hanoi_towers
             start_button.Click += new EventHandler(this.Start);
             control.Add(start_button);
 
+            Button solve_button = new Button();
+            solve_button.Location = new Point(400, 0);
+            solve_button.Text = "Решить";
+            solve_button.Click += new EventHandler(this.Solve);
+            control.Add(solve_button);
+
             for (int i = 0; i < cfg.numTowers; i++)
             {
                 towers[i] = new Tower(control);
@@ -61,7 +67,11 @@ namespace hanoi_towers
             for (int i = 0; i < cfg.num_disc; i++)
                 towers[0].Push(new Disc(control, new Size((int)(cfg.discMaxWidth * (1 - i / 10.0)), cfg.discHeight), ref towers[0]),false);
 
-            //Mover.Solver(cfg.num_disc, 0, 2, 1);
+        }
+        public void Solve(object sender,EventArgs e)
+        {
+            Mover.Solver(cfg.num_disc, 0, 2, 1);
+
         }
     }
 }

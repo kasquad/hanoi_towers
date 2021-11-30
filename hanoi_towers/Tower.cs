@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.Control;
@@ -12,7 +13,7 @@ namespace hanoi_towers
 
     public class Tower : DrawableObject
     {
-        static Timer timer1 = new Timer();
+        //static Timer timer1 = new Timer();
         Stack<Disc> discs = new Stack<Disc>();
         int y_top_goal;
         public Tower(Form.ControlCollection control) : base(ref control, cfg.sizeTower)
@@ -22,7 +23,7 @@ namespace hanoi_towers
             visual_container.SendToBack();
 
             y_top_goal = visual_container.Location.Y + cfg.offsetYtower;
-            timer1.Tick += wait;
+            //timer1.Tick += wait;
 
 
 
@@ -50,49 +51,42 @@ namespace hanoi_towers
         }
         void DiscAnimDraw(Disc disc,Point final_pos)
         {
-            timer1.Interval = 80;
+            //timer1.Interval = 200;
             bool flag = true;
             Point cur_pos = disc.visual_container.Location;
-            //timer1.Start();
-            disc.visual_container.Location = cur_pos;
-           
+            Move(y_top_goal, disc, true);
+            Move(final_pos.X, disc, false);
+            Move(final_pos.Y, disc, true);
+            
 
-            //while (disc.Location != final_pos)
-            //{
-            //    if (cur_pos.Y > y_top_goal && flag)
-            //    {
-            //        cur_pos.Y -= cfg.df;
-            //        continue;
+        }
+        /// <summary>
+        /// dir - false - horizontal , true - vertical
+        /// </summary>
+        /// <param name="goal"></param>
+        /// <param name="dir"></param>
+        /// <param name = "disc"></param>
+        void Move(int goal, Disc disc , bool dir )
+        {
+            int eps = 1;
+            int sign;
+            if (dir)
+            {
+                sign = Math.Sign(goal - disc.visual_container.Location.Y);
+                while (Math.Abs(goal - disc.visual_container.Location.Y) > eps)
+                {
+                    disc.visual_container.Location = new Point(disc.visual_container.Location.X,
+                                                               disc.visual_container.Location.Y + sign * cfg.df);
+                }
+                return;
+            }
+            sign = Math.Sign(goal - disc.visual_container.Location.X);
 
-            //    }
-            //    else if (cur_pos.X < final_pos.X)
-            //    {
-            //        if (cur_pos.X < final_pos.X)
-            //        {
-            //            cur_pos.X += cfg.df;
-            //            continue;
-
-            //        }
-
-            //    }
-            //    else if (cur_pos.X >= final_pos.X)
-            //    {
-            //        cur_pos.X -= cfg.df;
-            //        continue;
- 
-            //    }
-            //    flag = false;
-            //    if (cur_pos.Y < final_pos.Y&& !flag)
-            //    {
-            //        cur_pos.Y += cfg.df;
-            //    }
-     
- 
-            //}
-
-
-
-
+            while(Math.Abs(goal - disc.visual_container.Location.X) > eps)
+            {
+                disc.visual_container.Location = new Point(disc.visual_container.Location.X  + sign *cfg.df,
+                                                           disc.visual_container.Location.Y);
+            }
         }
         void wait(object sender, EventArgs e)
         {
