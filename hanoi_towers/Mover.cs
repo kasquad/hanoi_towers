@@ -36,16 +36,23 @@ namespace hanoi_towers
                     Engine.num_steps.Text = "Количество шагов: " + Mover.num_steps.ToString();
                     next_tower.Push(disc,false);
                     Engine.solve_button.Enabled = false;
+                  
                     return;
                 }
             }
             disc.Return();
         }
-        public static void Solver(int num_disc, int a, int b, int c)
+        public static void Solver(int num_disc, int i,int k)
         {
-            if (num_disc > 1) Solver(num_disc - 1, a, c, b);
-            Engine.towers[b].Push(Engine.towers[a].Pop(),true);
-            if (num_disc > 1) Solver(num_disc - 1, c, b, a);
+            if (num_disc == 1)
+                Engine.towers[k].Push(Engine.towers[i].Pop(),true);
+            else
+            {
+                int tmp = 3 - i - k;
+                Solver(num_disc - 1, i, tmp);
+                Engine.towers[k].Push(Engine.towers[i].Pop(), true);
+                Solver(num_disc - 1, tmp, k);
+            }
         }
     }
     

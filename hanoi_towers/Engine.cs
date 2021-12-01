@@ -58,6 +58,19 @@ namespace hanoi_towers
 
 
         }
+
+        static public bool IsWin()
+        {
+            if (towers[1].CountDisks() == cfg.num_disc)
+                return true;
+            return false;
+        }
+
+        static public void win()
+        {
+            if (IsWin())
+                MessageBox.Show("Вы выполнили задачу!");
+        }
         public void Start(object sender, EventArgs e)
         {
             solve_button.Enabled = true;
@@ -75,7 +88,7 @@ namespace hanoi_towers
         public void Solve(object sender,EventArgs e)
         {
             solve_button.Enabled = false;
-            Mover.Solver(cfg.num_disc, 0, 2, 1);
+            Mover.Solver(cfg.num_disc, 0,1);
 
         }
     }

@@ -16,6 +16,10 @@ namespace hanoi_towers
         //static Timer timer1 = new Timer();
         Stack<Disc> discs = new Stack<Disc>();
         int y_top_goal;
+        public int CountDisks()
+        {
+            return discs.Count();
+        }
         public Tower(Form.ControlCollection control) : base(ref control, cfg.sizeTower)
         {
             visual_container.BackColor = cfg.colorTower;
@@ -43,6 +47,7 @@ namespace hanoi_towers
             else
                 DiscAnimDraw(disc,pos);
             disc.curTower = this;
+            Engine.win();
 
         }
         void DiscAnimDraw(Disc disc,Point final_pos)
