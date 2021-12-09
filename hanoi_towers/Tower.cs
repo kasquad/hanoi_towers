@@ -53,7 +53,6 @@ namespace hanoi_towers
         void DiscAnimDraw(Disc disc,Point final_pos)
         {
             //timer1.Interval = 200;
-            bool flag = true;
             Point cur_pos = disc.visual_container.Location;
             Move(y_top_goal, disc, true);
             Move(final_pos.X, disc, false);
@@ -81,7 +80,7 @@ namespace hanoi_towers
                 {
                     disc.visual_container.Location = new Point(disc.visual_container.Location.X,
                                                                disc.visual_container.Location.Y + sign * cfg.df);
-                    Thread.Sleep(2);
+                    Thread.Sleep(cfg.Animation_speed_param);
                 }
                 return;
             }
@@ -91,7 +90,7 @@ namespace hanoi_towers
             {
                 disc.visual_container.Location = new Point(disc.visual_container.Location.X  + sign *cfg.df,
                                                            disc.visual_container.Location.Y);
-                Thread.Sleep(2);
+                Thread.Sleep(cfg.Animation_speed_param);
             }
         }
         void wait(object sender, EventArgs e)

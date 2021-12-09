@@ -23,6 +23,21 @@ namespace hanoi_towers
         public static Size sizeTower { get { return new Size(15, 300); } }
         public static readonly Color colorTower = Color.Gray;
 
-        
+        public static int Animation_speed_param {
+            get 
+            {
+                return max_animation_speed - animation_speed;
+            }
+            set
+            {
+                animation_speed = value;
+            }
+        }
+        private static int animation_speed;
+        public static readonly int max_animation_speed = 11;
+        public static readonly int min_animation_speed = 2;
+
+
+
     }
 }

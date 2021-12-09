@@ -13,11 +13,15 @@ namespace hanoi_towers
     class Engine
     {
         TrackBar numDiskSelector;
+        TrackBar speedSelector;
+
         static public Label num_steps = new Label();
+        
 
         Form.ControlCollection control;
         static public Tower[] towers = new Tower[cfg.numTowers];
         List<Disc> discs = new List<Disc>();
+
 
         static public Button solve_button;
 
@@ -31,8 +35,17 @@ namespace hanoi_towers
             numDiskSelector.Location = new Point(730, 10);
             control.Add(numDiskSelector);
 
+            speedSelector = new TrackBar();
+            speedSelector.Maximum = cfg.max_animation_speed;
+            speedSelector.Minimum = cfg.min_animation_speed;
+            speedSelector.Value = cfg.max_animation_speed/2;
+            speedSelector.Location = new Point(730, 60);
+            speedSelector.TickFrequency = 2;
+            control.Add(speedSelector);
+
+
             Button start_button = new Button();
-            start_button.Location = new Point(730, 60);
+            start_button.Location = new Point(730, 110);
             start_button.Text = "Старт!";
             start_button.Click += new EventHandler(this.Start);
             control.Add(start_button);
@@ -88,6 +101,7 @@ namespace hanoi_towers
         public void Solve(object sender,EventArgs e)
         {
             solve_button.Enabled = false;
+            cfg.Animation_speed_param = speedSelector.Value;
             Mover.Solver(cfg.num_disc, 0,1);
 
         }
